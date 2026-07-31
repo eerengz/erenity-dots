@@ -62,6 +62,10 @@ sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
 
 echo -e "\n${BLUE}[2/8] Disk Otomatik Bölümlendiriliyor (${DISK})...${NC}"
+# Aktif swap varsa kapat
+swapoff -a 2>/dev/null || true
+umount -R /mnt 2>/dev/null || true
+
 # Eski p5 ve p6 varsa kaldır
 sgdisk -d 5 "$DISK" 2>/dev/null || true
 sgdisk -d 6 "$DISK" 2>/dev/null || true
@@ -83,7 +87,8 @@ mkfs.ext4 -F "$ROOT_PART"
 
 echo -e "\n${BLUE}[4/8] Diskler /mnt Dizinine Bağlanıyor...${NC}"
 mount "$ROOT_PART" /mnt
-mount --mkdir "$EFI_PART" /mnt/boot
+mkdir -p /mnt/boot
+mount "$EFI_PART" /mnt/boot
 
 echo -e "\n${BLUE}[5/8] Arch Linux ve NVIDIA Paketleri Yükleniyor...${NC}"
 pacstrap -K /mnt \
@@ -124,15 +129,22 @@ echo "root:1234" | chpasswd
 # Kullanıcı Oluşturma ve Sudo Yetkisi
 useradd -m -G wheel -s /bin/bash ${USERNAME}
 echo "${USERNAME}:1234" | chpasswd
-echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
+mkdir -p /etc/sudoers.d
+echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel
+chmod 440 /etc/sudoers.d/wheel
 
 # NVIDIA Kernel Modülleri (/etc/mkinitcpio.conf)
-sed -i 's/MODULES=(.*)/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g' /etc/mkinitcpio.conf
+sed -i 's/^MODULES=.*/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
 mkinitcpio -P
 
 # GRUB & Dual-Boot (Windows 11/10 Otomatik Algılama)
-echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1 nvidia-drm.fbdev=1"/g' /etc/default/grub
+if ! grep -q "GRUB_DISABLE_OS_PROBER" /etc/default/grub; then
+  echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+else
+  sed -i 's/GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
+fi
+
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1 nvidia-drm.fbdev=1"/' /etc/default/grub
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -144,7 +156,7 @@ systemctl enable tlp
 
 # Glacier Dots Reposunu Kopyala
 cd /home/${USERNAME}
-git clone https://github.com/eerengz/glacier-dots.git glacier-dots
+git clone https://github.com/eerengz/glacier-dots.git glacier-dots || true
 chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/glacier-dots
 
 EOF
