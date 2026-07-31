@@ -87,8 +87,8 @@ mkfs.ext4 -F "$ROOT_PART"
 
 echo -e "\n${BLUE}[4/8] Diskler /mnt Dizinine Bağlanıyor...${NC}"
 mount "$ROOT_PART" /mnt
-mkdir -p /mnt/boot
-mount "$EFI_PART" /mnt/boot
+mkdir -p /mnt/boot/efi
+mount "$EFI_PART" /mnt/boot/efi
 
 echo -e "\n${BLUE}[5/8] Arch Linux ve NVIDIA Paketleri Yükleniyor...${NC}"
 pacstrap -K /mnt \
@@ -146,7 +146,7 @@ fi
 
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1 nvidia-drm.fbdev=1"/' /etc/default/grub
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Servisleri Aktifleştir
