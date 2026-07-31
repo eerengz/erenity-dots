@@ -3,4 +3,3 @@ bibata-cursor-theme-bin
 catppuccin-gtk-theme-mocha
 adw-gtk3
 quickshell-git
-paru-bin
