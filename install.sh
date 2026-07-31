@@ -28,7 +28,8 @@ fi
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo -e "${BLUE}[1] Sistem Güncelleniyor...${NC}"
+echo -e "${BLUE}[1] Sistem Güncelleniyor (Multilib Etkinleştiriliyor)...${NC}"
+sudo sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
 sudo pacman -Syu --noconfirm
 
 echo -e "\n${BLUE}[2] Resmi Paketler Kuruluyor...${NC}"

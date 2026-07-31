@@ -57,20 +57,26 @@ echo -e "\n${BLUE}[1/8] İnternet Bağlantısı ve Saat Ayarlanıyor...${NC}"
 loadkeys trq || true
 timedatectl set-ntp true
 
+echo -e "\n${BLUE}[1.5/8] Multilib Deposu (32-bit Desteği) Etkinleştiriliyor...${NC}"
+sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
+pacman -Sy --noconfirm
+
 echo -e "\n${BLUE}[2/8] Disk Otomatik Bölümlendiriliyor (${DISK})...${NC}"
 # Eski p5 ve p6 varsa kaldır
 sgdisk -d 5 "$DISK" 2>/dev/null || true
 sgdisk -d 6 "$DISK" 2>/dev/null || true
 partprobe "$DISK" || true
+udevadm settle || true
 
 # 8GB Swap (p5) ve Kalan Alan Root (p6) oluştur
 sgdisk -n 5:0:+8G -t 5:8200 -c 5:"Linux swap" "$DISK"
 sgdisk -n 6:0:0   -t 6:8300 -c 6:"Linux root" "$DISK"
-partprobe "$DISK"
-sleep 2
+partprobe "$DISK" || true
+udevadm settle || true
+sleep 5
 
 echo -e "\n${BLUE}[3/8] Bölümler Biçimlendiriliyor...${NC}"
-mkswap -F "$SWAP_PART"
+mkswap -f "$SWAP_PART"
 swapon "$SWAP_PART"
 
 mkfs.ext4 -F "$ROOT_PART"
@@ -83,6 +89,7 @@ echo -e "\n${BLUE}[5/8] Arch Linux ve NVIDIA Paketleri Yükleniyor...${NC}"
 pacstrap -K /mnt \
   base linux linux-firmware linux-headers base-devel \
   git nano networkmanager sudo pipewire pipewire-pulse wireplumber \
+  bluez bluez-utils \
   nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland \
   grub efibootmgr os-prober ntfs-3g tlp brightnessctl
 
@@ -93,6 +100,9 @@ echo -e "\n${BLUE}[7/8] Sistem Yapılandırılıyor (Chroot)...${NC}"
 
 arch-chroot /mnt /bin/bash <<EOF
 set -e
+
+# Multilib deposunu kurulan sistemde de aktifleştir
+sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
 
 # Saat Dilimi & Saat
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
