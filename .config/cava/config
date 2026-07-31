@@ -1,0 +1,23 @@
+[general]
+mode = normal
+framerate = 60
+autosens = 1
+bars = 0
+bar_width = 2
+bar_spacing = 1
+
+[color]
+background = default
+foreground = default
+
+gradient = 1
+gradient_color_1 = '#89b4fa'
+gradient_color_2 = '#cba6f7'
+gradient_color_3 = '#f5c2e7'
+gradient_color_4 = '#f38ba8'
+
+[smoothing]
+integral = 77
+monstercat = 1
+gravity = 100
+ignore = 0

@@ -1,0 +1,59 @@
+# Starship config based on Catppuccin Mocha
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$rust\
+$golang\
+$cmd_duration\
+$line_break\
+$character"""
+
+right_format = """$time"""
+
+[directory]
+truncation_length = 3
+style = "bold #b4befe"
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "bold #cba6f7"
+
+[git_status]
+style = "bold #eba0ac"
+
+[character]
+success_symbol = "[❯](#a6e3a1)"
+error_symbol = "[❯](#f38ba8)"
+vimcmd_symbol = "[❮](#f9e2af)"
+
+[cmd_duration]
+min_time = 2000
+style = "bold #f9e2af"
+format = "[$duration]($style) "
+
+[time]
+disabled = false
+time_format = "%T"
+style = "#a6adc8"
+format = "[$time]($style)"
+
+[nodejs]
+symbol = " "
+style = "bold #a6e3a1"
+
+[python]
+symbol = " "
+style = "bold #f9e2af"
+
+[rust]
+symbol = " "
+style = "bold #eba0ac"
+
+[golang]
+symbol = " "
+style = "bold #89dceb"

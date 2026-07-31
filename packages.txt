@@ -1,0 +1,76 @@
+# === Çekirdek ===
+hyprland
+waybar
+kitty
+rofi
+zsh
+neovim
+
+# === NVIDIA Sürücü ===
+nvidia-dkms
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
+
+# === Hyprland Ekosistemi ===
+hyprlock
+hypridle
+hyprpicker
+hyprshot
+hyprpolkitagent
+
+# === Bildirim & Clipboard ===
+swaync
+cliphist
+wl-clipboard
+
+# === Wallpaper ===
+awww
+
+# === Tema & Font ===
+papirus-icon-theme
+ttf-jetbrains-mono-nerd
+
+# === Araçlar ===
+starship
+fastfetch
+cava
+btop
+zathura
+zathura-pdf-mupdf
+yazi
+thunar
+
+# === Ses / Ağ / Bluetooth ===
+pavucontrol
+pamixer
+blueman
+networkmanager
+network-manager-applet
+
+# === Medya & Pipewire ===
+qt6-declarative
+playerctl
+pipewire
+pipewire-pulse
+wireplumber
+
+# === Laptop ===
+brightnessctl
+tlp
+power-profiles-daemon
+
+# === Zsh Eklentileri ===
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-completions
+
+# === Ekstra ===
+eza
+bat
+ripgrep
+fd
+unzip
+wget
+curl
+git

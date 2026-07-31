@@ -1,0 +1,97 @@
+* {
+    /* Catppuccin Mocha Palette */
+    rosewater: #f5e0dc;
+    flamingo: #f2cdcd;
+    pink: #f5c2e7;
+    mauve: #cba6f7;
+    red: #f38ba8;
+    maroon: #eba0ac;
+    peach: #fab387;
+    yellow: #f9e2af;
+    green: #a6e3a1;
+    teal: #94e2d5;
+    sky: #89dceb;
+    sapphire: #74c7ec;
+    blue: #89b4fa;
+    lavender: #b4befe;
+    text: #cdd6f4;
+    subtext1: #bac2de;
+    subtext0: #a6adc8;
+    overlay2: #9399b2;
+    overlay1: #7f849c;
+    overlay0: #6c7086;
+    surface2: #585b70;
+    surface1: #45475a;
+    surface0: #313244;
+    base: #1e1e2e;
+    mantle: #181825;
+    crust: #11111b;
+
+    background-color: transparent;
+    text-color: @text;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 600px;
+    border-radius: 16px;
+    background-color: rgba(30, 30, 46, 0.9); /* base with opacity for glassmorphism */
+    border: 2px;
+    border-color: @mauve;
+    padding: 20px;
+}
+
+mainbox {
+    spacing: 15px;
+}
+
+inputbar {
+    background-color: @surface0;
+    border-radius: 12px;
+    padding: 10px;
+    children: [prompt, entry];
+    spacing: 10px;
+}
+
+prompt {
+    text-color: @mauve;
+    background-color: inherit;
+}
+
+entry {
+    background-color: inherit;
+    text-color: @text;
+    placeholder: "Search...";
+    placeholder-color: @overlay0;
+}
+
+listview {
+    lines: 8;
+    spacing: 5px;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @mauve;
+    text-color: @crust;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 24px;
+    background-color: inherit;
+    padding: 0 10px 0 0;
+}
