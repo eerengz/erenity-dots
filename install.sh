@@ -110,7 +110,7 @@ sudo systemctl enable --now tlp
 echo -e "\n${BLUE}[10] Hyprglass Kurulumu (hyprpm)...${NC}"
 echo -e "${YELLOW}Hyprland eklenti yöneticisi (hyprpm) ile hyprglass kuruluyor...${NC}"
 hyprpm update
-if hyprpm add https://github.com/Duckonaut/hyprglass; then
+if hyprpm add https://github.com/hyprnux/hyprglass; then
     hyprpm enable hyprglass
     echo -e "${GREEN}Hyprglass başarıyla kuruldu ve etkinleştirildi.${NC}"
 else

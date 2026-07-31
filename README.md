@@ -37,8 +37,8 @@ Catppuccin Mocha temalı, üretkenlik ve estetik odaklı Arch Linux Hyprland yap
 > **Uyarı:** Bu betik sistem yapılandırmalarınızı değiştirecektir. Kullanmadan önce mevcut dosyalarınızı yedekleyin.
 
 ```bash
-git clone https://github.com/KULLANICI_ADI/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/eerengz/glacier-dots.git ~/glacier-dots
+cd ~/glacier-dots
 chmod +x install.sh
 ./install.sh
 ```
@@ -72,8 +72,8 @@ Eğer betiği kullanmak istemezseniz, adımları manuel olarak uygulayabilirsini
 *(Buraya daha fazla ekran görüntüsü eklenecek)*
 
 ## 👏 Teşekkürler (Credits)
-- [DynamicGlacier](https://github.com/Kirottu/dynamic-glacier)
-- [Hyprglass](https://github.com/Duckonaut/hyprglass)
+- [DynamicGlacier](https://github.com/mavxa/DynamicGlacier)
+- [Hyprglass](https://github.com/hyprnux/hyprglass)
 - [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 ## 📄 Lisans
