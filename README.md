@@ -1,4 +1,4 @@
-# 🏔️ Glacier Dots
+# 🌸 Erenity Dots
 
 **Arch Linux + Hyprland + NVIDIA Dotfiles**
 
@@ -43,13 +43,13 @@ Catppuccin Mocha temalı, üretkenlik ve estetik odaklı Arch Linux Hyprland yap
 
 ### 1. Otomatik Arch Kurulumu (Live ISO içinde)
 ```bash
-curl -sL https://raw.githubusercontent.com/eerengz/glacier-dots/master/auto-install.sh | bash
+curl -sL https://raw.githubusercontent.com/eerengz/erenity-dots/master/auto-install.sh | bash
 ```
 > Reboot sonrası kullanıcıyla oturum açın.
 
 ### 2. Dotfiles Kurulumu (Yüklü sistemde)
 ```bash
-cd ~/glacier-dots
+cd ~/erenity-dots
 chmod +x install.sh
 ./install.sh
 ```

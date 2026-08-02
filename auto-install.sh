@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# 🏔️ GLACIER ARCH AUTOMATED INSTALLER (NVIDIA RTX 3050 Laptop)
+# 🌸 ERENITY ARCH AUTOMATED INSTALLER (NVIDIA RTX 3050 Laptop)
 # ==============================================================================
 # ⚠️  DİKKAT: Bu script YALNIZCA yazarın kendi donanım/bölüm düzeni için
 # tasarlanmıştır. Farklı bir makinede kullanmadan önce aşağıdaki değişkenleri
@@ -21,12 +21,12 @@ NC='\033[0m'
 clear
 echo -e "${CYAN}"
 cat << "EOF"
-  ██████╗ ██╗      █████╗  ██████╗██╗███████╗██████╗ 
- ██╔════╝ ██║     ██╔══██╗██╔════╝██║██╔════╝██╔══██╗
- ██║  ███╗██║     ███████║██║     ██║█████╗  ██████╔╝
- ██║   ██║██║     ██╔══██║██║     ██║██╔══╝  ██╔══██╗
- ╚██████╔╝███████╗██║  ██║╚██████╗██║███████╗██║  ██║
-  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝╚══════╝╚═╝  ╚═╝
+  _____                    _ _         
+ |  ___| __ ___ _ __   ___| | |_ _   _ 
+ | |_  | '__/ _ \ '_ \ / _ \ | __| | | |
+ |  _| | | |  __/ | | |  __/ | |_| |_| |
+ |_|   |_|  \___|_| |_|\___|_|\__|\__, |
+                                   |___/ 
   Arch Linux + Hyprland + NVIDIA RTX 3050 Auto-Installer
 EOF
 echo -e "${NC}"
@@ -44,7 +44,7 @@ EFI_PART="${DISK}p1"   # Windows EFI bölümü — p1 olduğu doğrulanacak
 SWAP_PART="${DISK}p5"  # Oluşturulacak swap bölümü (8 GB)
 ROOT_PART="${DISK}p6"  # Oluşturulacak root bölümü (kalan alan)
 USERNAME="ero"
-HOSTNAME="glacier"
+HOSTNAME="erenity"
 # ==============================================================================
 
 # --- Mevcut disk düzenini göster ---
@@ -200,15 +200,15 @@ systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable tlp
 
-# Glacier Dots Reposunu Kopyala
+# Erenity Dotfiles Reposunu Kopyala
 cd /home/${USERNAME}
-if git clone https://github.com/eerengz/glacier-dots.git glacier-dots; then
-    chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/glacier-dots
-    echo "glacier-dots başarıyla klonlandı."
+if git clone https://github.com/eerengz/erenity-dots.git erenity-dots; then
+    chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/erenity-dots
+    echo "erenity-dots başarıyla klonlandı."
 else
-    echo "⚠️  UYARI: glacier-dots klonlanamadı. İnternet bağlantısını kontrol edin."
+    echo "⚠️  UYARI: erenity-dots klonlanamadı. İnternet bağlantısını kontrol edin."
     echo "Sistem kurulumu tamamlandı, dotfiles'ı daha sonra şu komutla alabilirsiniz:"
-    echo "  git clone https://github.com/eerengz/glacier-dots.git ~/glacier-dots"
+    echo "  git clone https://github.com/eerengz/erenity-dots.git ~/erenity-dots"
 fi
 
 EOF
@@ -224,7 +224,7 @@ echo -e " 1. ${YELLOW}reboot${NC} yazıp USB belleği çıkarın."
 echo -e " 2. GRUB ekranından 'Arch Linux' seçin."
 echo -e " 3. '${USERNAME}' kullanıcısı ve belirlediğiniz şifreyle giriş yapın."
 echo -e " 4. Hyprland ve tüm dotfiles'ı kurmak için:"
-echo -e "    ${GREEN}cd ~/glacier-dots && chmod +x install.sh && ./install.sh${NC}"
+echo -e "    ${GREEN}cd ~/erenity-dots && chmod +x install.sh && ./install.sh${NC}"
 echo -e " 5. Hyprland'e ilk girişten SONRA bir terminalde hyprglass'ı kurun:"
 echo -e "    ${GREEN}hyprpm update && hyprpm add https://github.com/hyprnux/hyprglass && hyprpm enable hyprglass${NC}"
 echo -e "${GREEN}================================================================${NC}"
