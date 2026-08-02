@@ -1,5 +1,18 @@
-dynamic-glacier-git
+# === Wallpaper ===
+# swww 2025'te "awww" olarak yeniden adlandırıldı; binary adı hâlâ "swww"
+swww-git
+
+# === Cursor Teması ===
 bibata-cursor-theme-bin
+
+# === GTK Temaları ===
 catppuccin-gtk-theme-mocha
 adw-gtk3
+
+# === Dynamic Island Widget ===
+# DynamicGlacier — opsiyonel, elle kurulum gerekir:
+# paru -S dynamic-glacier-git
+# Sonra autostart.conf'taki exec-once satırını açıklamadan çıkarın.
+
+# === Quickshell (DynamicGlacier bağımlılığı) ===
 quickshell-git

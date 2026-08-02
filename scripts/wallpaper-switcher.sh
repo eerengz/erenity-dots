@@ -1,5 +1,6 @@
 #!/bin/bash
-# Duvar kağıdı değiştirme betiği (swww kullanır)
+# Duvar kağıdı değiştirme betiği
+# Bağımlılık: swww-git (AUR) — binary adı "swww"
 
 # Duvar kağıtlarının bulunduğu klasör
 WALLPAPER_DIR="$HOME/wallpapers"
@@ -37,4 +38,4 @@ fi
 swww img "$IMAGE" --transition-type "$TRANSITION_TYPE" --transition-duration "$TRANSITION_DURATION"
 
 # Bildirim gönder
-notify-send -i "$IMAGE" "  Duvar Kağıdı Değiştirildi" "Yeni duvar kağıdı uygulandı."
+notify-send -i "$IMAGE" "  Duvar Kağıdı Değiştirildi" "Yeni duvar kağıdı uygulandı."

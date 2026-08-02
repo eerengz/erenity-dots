@@ -24,9 +24,6 @@ swaync
 cliphist
 wl-clipboard
 
-# === Wallpaper ===
-awww
-
 # === Tema & Font ===
 papirus-icon-theme
 ttf-jetbrains-mono-nerd
@@ -40,11 +37,15 @@ zathura
 zathura-pdf-mupdf
 yazi
 thunar
+mpv
+wlogout
 
 # === Ses / Ağ / Bluetooth ===
 pavucontrol
 pamixer
 blueman
+bluez
+bluez-utils
 networkmanager
 network-manager-applet
 
